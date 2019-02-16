@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: eureka-server
+
+  profiles: dev
+
+  cloud:
+    config:
+      uri: https://github.com/yandonghai/ymall-repository.git
