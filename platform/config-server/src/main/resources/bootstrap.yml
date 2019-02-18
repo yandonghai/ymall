@@ -7,5 +7,10 @@ spring:
           search-paths: ymall-repo
           username: 445288363@qq.com
           password: yandonghai1988
+    stream:
+      kafka:
+        binder:
+          zk: 2181
+          brokers: 9092
   application:
     name: config-server
