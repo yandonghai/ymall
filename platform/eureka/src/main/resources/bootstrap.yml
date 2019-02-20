@@ -6,4 +6,19 @@ spring:
 
   cloud:
     config:
-      uri: https://github.com/yandonghai/ymall-repository.git
+      #uri: https://github.com/yandonghai/ymall-repository.git
+      discovery:
+        service-id: config-server
+        enabled: true
+      profile: dev
+    bus:
+      refresh:
+        enabled: true
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
