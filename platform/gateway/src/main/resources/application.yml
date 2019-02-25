@@ -1,7 +1,11 @@
-eureka:
-  instance:
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 30
-  client:
-    service-url:
-      defaultZone: http://localhost:8088/eureka/
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      routes:
+      - id: user-service
+        uri: lb:/user
+      discovery:
+        locator:
+          predicates:
+            - path: /user/**
