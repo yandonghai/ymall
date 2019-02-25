@@ -1,0 +1,21 @@
+server:
+  port: 8097
+
+spring:
+  cloud:
+    config:
+      discovery:
+        service-id: config-server
+        enabled: true
+      profile: dev
+    bus:
+      refresh:
+        enabled: true
+    kafka:
+     bootstrap-servers:
+      - localhost:9092
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
