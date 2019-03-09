@@ -1,11 +1,28 @@
 spring:
   cloud:
     gateway:
-      default-filters:
-      routes:
-      - id: user-service
-        uri: lb:/user
       discovery:
         locator:
-          predicates:
-            - path: /user/**
+          enabled: true
+      routes:
+      - id: USER-SERVICE
+        uri: lb://USER-SERVICE
+        predicates:
+          - Path=/api/user/**
+        filters:
+          - StripPrefix=1
+
+      - id: ITEM-SERVICE
+        uri: lb://ITEM-SERVICE
+        predicates:
+          - Path=/api/item/**
+        filters:
+          - StripPrefix=1
+
+
+logging:
+ level:
+  org.springframework.cloud.gateway: TRACE
+  org.springframework.http.server.reactive: DEBUG
+  org.springframework.web.reactive: DEBUG
+  reactor.ipc.netty: DEBUG

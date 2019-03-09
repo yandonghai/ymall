@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.yan.ymall</groupId>
-        <artifactId>user-parent</artifactId>
+        <artifactId>item-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>user-api</artifactId>
+    <artifactId>item-api</artifactId>
     <packaging>jar</packaging>
-    <name>user-api</name>
-    <description>user common api for user service</description>
+    <name>item-api</name>
+    <description>item-api</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -33,14 +33,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

@@ -19,3 +19,6 @@ spring:
       web:
         exposure:
           include: '*'
+logging:
+  level:
+    org.springframe: debug
