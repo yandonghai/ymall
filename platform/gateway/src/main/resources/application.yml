@@ -18,7 +18,17 @@ spring:
           - Path=/api/item/**
         filters:
           - StripPrefix=1
+  redis:
+    host: localhost
 
+filters:
+- name: RequestRateLimiter
+  args:
+    key-resolver: '#{@remoteAddressKeyResolver}'
+    # 每秒最大访问次数
+    redis-rate-limiter.replenishRate: 20
+    # redis令牌桶最大容量
+    redis-rate-limiter.burstCapacity: 20
 
 logging:
  level:
