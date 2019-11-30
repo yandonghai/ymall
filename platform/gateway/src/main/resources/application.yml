@@ -5,34 +5,34 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: USER-SERVICE
-        uri: lb://USER-SERVICE
-        predicates:
-          - Path=/api/user/**
-        filters:
-          - StripPrefix=1
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1
 
-      - id: ITEM-SERVICE
-        uri: lb://ITEM-SERVICE
-        predicates:
-          - Path=/api/item/**
-        filters:
-          - StripPrefix=1
+        - id: ITEM-SERVICE
+          uri: lb://ITEM-SERVICE
+          predicates:
+            - Path=/api/item/**
+          filters:
+            - StripPrefix=1
   redis:
     host: localhost
 
 filters:
-- name: RequestRateLimiter
-  args:
-    key-resolver: '#{@remoteAddressKeyResolver}'
-    # 每秒最大访问次数
-    redis-rate-limiter.replenishRate: 20
-    # redis令牌桶最大容量
-    redis-rate-limiter.burstCapacity: 20
+  - name: RequestRateLimiter
+    args:
+      key-resolver: '#{@remoteAddressKeyResolver}'
+      # 每秒最大访问次数
+      redis-rate-limiter.replenishRate: 20
+      # redis令牌桶最大容量
+      redis-rate-limiter.burstCapacity: 20
 
 logging:
- level:
-  org.springframework.cloud.gateway: TRACE
-  org.springframework.http.server.reactive: DEBUG
-  org.springframework.web.reactive: DEBUG
-  reactor.ipc.netty: DEBUG
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
